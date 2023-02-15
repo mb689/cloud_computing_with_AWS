@@ -10,7 +10,11 @@
 - Step8 -> Configure Security Group. This is a virtual firewall that controls inbound and outbound traffic to your instance.
 - Step9 -> Review your instance details and click "Launch" to start your instance.
 - Step10 -> Choose a key pair. This is used to encrypt login information and connect to your instance. You can choose an existing key pair or create a new one.
-- Step11 -> Once the instance is running, connect to it using SSH (for Linux instances).
+- Step11 -> Once the instance is running, connect to it using `SSH (for Linux instances)`.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
