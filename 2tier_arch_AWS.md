@@ -9,3 +9,11 @@
 - Availability Zones (AZs) in AWS are geographically distinct data centers within a region that are designed to provide high availability and fault tolerance for applications and services. 
 - An Availability Zone is a physically separate location within a region that is designed to be isolated from failures in other Availability Zones in the same region.
 - Each Availability Zone has independent power, cooling, and networking infrastructure, and is connected to the other Availability Zones in the region through high-speed, low-latency links.
+
+
+# Requirements for our 2 tier arch
+- Deploy app instance so that it has a public ip
+- Deploy a second instance for our database with the correct dependencies -> `Ubuntu 18.04`, `MongoDB installed` and change mongod.conf to `0.0.0.0`
+- Create a security group for database instance -> 27017 which allows from anywhere -> allow only from app instance.
+- Create env var the db endpoint
+- Relaunch app
