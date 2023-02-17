@@ -54,3 +54,18 @@
 
 ## Key Points
 - Make sure to never delete EC2 instance before the compeletion of you AMI. 
+
+
+# Using AMIs to launch our app with a database
+- Create two instances one being for the app and the other being for the database. This will cause us to have a two-tier infastructure. 
+- `SSH` into both instances and run their individual provision scripts to have all the correct working dependencies and tools.
+- Within the app make sure to create an `env var` with the databses ip address to connect to the database. 
+- Launch the app and check to see if the webpage is available and if the information from the database is outputted to us.
+- Now that we have our app working with our database we would now like to make 2 seperate `AMIs` for the instances we have created.
+- Once these have made we can `terminate` our old instances as they are now saved as an AMI.
+- Create an AMI for each instance by using the same `security group` for each AMI.
+- Before we can launch our app we need to make changes to our `env var` because when we made our database AMI the ip has changed and so we need to reflect this change in our variable.
+- Use the `unset`, followed by var name, command to remove the value stored in the `env var` and now set the variable with the new ip address of the database.
+- We can now test and lauinch our app by using `npm start` and typing in the app ip address followed by the /posts page.
+
+![](./images/architecture_ami_instance.png)
