@@ -69,3 +69,4 @@
 - We can now test and lauinch our app by using `npm start` and typing in the app ip address followed by the /posts page.
 
 ![](./images/architecture_ami_instance.png)
+![](./images/Working_WebPage.png)
