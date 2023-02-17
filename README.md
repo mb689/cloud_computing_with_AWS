@@ -35,3 +35,22 @@
 - Netflix: Netflix is a video streaming service that uses Amazon Web Services (AWS) to host and deliver its content to millions of subscribers around the world.
 - Spotify: Spotify is a music streaming service that uses Google Cloud Platform to store and deliver its music to millions of users around the world
 - Adobe: Adobe is a software company that provides creative tools and digital marketing solutions. It uses cloud computing to deliver its software as a service (SaaS) offerings, such as Adobe Creative Cloud and Adobe Marketing Cloud.
+
+
+## Creating AMIs
+
+### AMI Diagram
+![](./images/AMIs.png) 
+
+### Guide
+- Launch an EC2 instance: Log in to the AWS Management Console, navigate to the EC2 service, and launch an EC2 instance. Make sure that the instance meets your requirements and has all the necessary software and configurations.
+- Connect to the EC2 instance: Once the instance is up and running, connect to it using a Secure Shell (SSH) client.
+- Install or update any software or dependencies you need on the EC2 instance.
+- Stop the instance: Stop the instance once you have finished installing and configuring the software.
+- Create an AMI: Select the stopped instance in the EC2 console, then choose the "Create Image" action from the "Actions" menu.
+- ![](./images/create_image(AMI).png)
+- Wait for the AMI creation process to complete: Once you start the AMI creation process, it will take some time to complete. The time taken depends on the size of the instance and the amount of data stored on the instance.
+- After it the ami has been setup and it is not in a pending state then you can delete you ec2 instance. 
+
+## Key Points
+- Make sure to never delete EC2 instance before the compeletion of you AMI. 
