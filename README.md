@@ -109,3 +109,26 @@ Amazon S3 (Simple Storage Service) is a scalable cloud-based object storage serv
 ## CRUD 
 - In Amazon S3 (Simple Storage Service), you can perform CRUD (Create, Read, Update, Delete) operations on objects in a bucket. 
 
+
+# Setup aws cli to use S3 services.
+- A step by step guide on how to setup aws cli to use services such as S3 on a command line:
+    - Make a new EC2 instance on aws and ssh into it.
+    - Update and upgrade all the tools and dependencies to have them up to date.
+    - Now download python3 and pip on your linux terminal (use --version to check if tools have been downloaded).
+    - Next type the command `aws configure` and fill out the fields to allow a secure connection to be made between you EC2 instance and the S3 service.
+    - `access key` = your access key, `secret key` = your secret key, `region` = `eu-west-1`, 'datatype' = `json`.
+    - To check if your connected run the command `aws s3 ls` and you should have a list buckets in your S3.
+    - Now we can move onto making a bucket in S3 and this is done by running the command `aws s3 mb s3://mohamed-tech201`
+    - Take care when naming your bucket as there is a naming convention put in place.
+    - Now we can upload some information to our bucket by using the command `aws s3 cp s3://test.txt`
+    - When we upload information to our bucket a URL is allocated to it to allow us to access it but the permission is denied to read the data.
+    - ![](./images/Permissions.png)
+    - We need to change the permission on the dashboard on aws to allow data to be read.
+    - ![](./images/Change%20permissions.png)
+    - Now we are able to view the data
+    - ![](./images/data.png)
+
+
+    ## S3 diagram
+
+    ![](./images/S3%20Diagram.png) 
