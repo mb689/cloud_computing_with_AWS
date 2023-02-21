@@ -131,4 +131,23 @@ Amazon S3 (Simple Storage Service) is a scalable cloud-based object storage serv
 
     ## S3 diagram
 
-    ![](./images/S3%20Diagram.png) 
+    ![](./images/S3%20Diagram.png)
+
+    # Autoscaling & Load balancers
+
+    ## What is autoscaling in aws?
+    - AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost. Using AWS Auto Scaling, it's easy to setup application scaling for multiple resources across multiple services in minutes.
+
+    ## Advantages of autoscaling
+    - AWS Auto Scaling can help you optimize your utilization and cost efficiencies when consuming AWS services so you only pay for the resources you actually need. When demand drops, AWS Auto Scaling will automatically remove any excess resource capacity so you avoid overspending.
+
+    ## What is a load balancer?
+    - A load balancer serves as the single point of contact for clients. The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. This increases the availability of your application. You add one or more listeners to your load balancer.
+
+    ## Benefits of a load balancer
+    - Load balancing lets you evenly distribute network traffic to prevent failure caused by overloading a particular resource. This strategy improves the performance and availability of applications, websites, databases, and other computing resources. It also helps process user requests quickly and accurately.
+
+    ## ALB in AWS
+    - Application Load Balancer (ALB) is a fully managed layer 7 load balancing service that load balances incoming traffic across multiple targets, such as Amazon EC2 instances. ALB supports advanced request routing features based on parameters like HTTP headers and methods, query string, host and path based routing. 
+
+    ![](./images/AUTOSCALING.png)
