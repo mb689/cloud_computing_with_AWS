@@ -151,3 +151,82 @@ Amazon S3 (Simple Storage Service) is a scalable cloud-based object storage serv
     - Application Load Balancer (ALB) is a fully managed layer 7 load balancing service that load balances incoming traffic across multiple targets, such as Amazon EC2 instances. ALB supports advanced request routing features based on parameters like HTTP headers and methods, query string, host and path based routing. 
 
     ![](./images/AUTOSCALING.png)
+
+# Create an auto scaling group
+- Step1 -> Choose your auto scaling group settings: First, you need to determine the desired settings for your auto scaling group. This includes things like the minimum and maximum number of instances in the group, the launch configuration or launch template to use for new instances, the availability zones to use, and the scaling policies that control when and how the group scales up or down.
+- Step2 -> Create an launch configuration or launch template: Next, you'll need to create a launch configuration or launch template that specifies the instance type, AMI, security groups, and other configuration settings for your instances.
+- Step3 -> Create the auto scaling group: Once you have your settings and launch configuration or launch template in place, you can create the auto scaling group itself. This involves specifying the group name, the launch configuration or launch template to use, the subnets and availability zones to use, and other settings like health check grace period.
+- Step4 -> Add scaling policies: Once your auto scaling group is created, you can add scaling policies that define how and when the group should scale up or down. These policies can be based on metrics like CPU utilization or network traffic, and can specify how many instances to add or remove when scaling occurs.
+- Step5 -> Test and monitor: Finally, you should test your auto scaling group to make sure it is working as expected, and monitor it to ensure it is scaling up and down appropriately in response to changes in demand.
+
+![](./images/as-basic-diagram.png)
+
+# VPC
+
+## What are VPCs?
+- A VPC (Virtual Private Cloud) is a virtual network infrastructure that allows you to create isolated, logically defined network environments within a public cloud provider's infrastructure, such as Amazon Web Services (AWS) or Microsoft Azure.
+
+- A VPC provides the ability to launch compute instances, storage resources, and other cloud services in a virtual network that is logically separated from other networks and services running in the same cloud provider's infrastructure.
+
+## How do VPCs help a business?
+- Security: By creating an isolated network environment with its own IP address range, subnets, and routing tables, a VPC allows businesses to define and control access to their cloud resources. They can configure security groups and network ACLs to restrict access to resources and protect them from unauthorized access.
+- Cost-effective: Using a VPC can help businesses reduce their IT costs by eliminating the need for expensive physical networking hardware. With a VPC, they can deploy and manage their resources in the cloud, without the need for on-premises infrastructure.
+- Scalability: VPCs are highly scalable, allowing businesses to easily add or remove resources as needed. They can add more compute instances, storage resources, or other cloud services to their VPCs, and they can expand their IP address range or create new subnets to accommodate growth.
+
+## How do they help devops?
+- The VPC restricts what sort of traffic, IP addresses and also the users that can access your instances. This prevents unwanted guests accessing your resources and secures you from things like DDOS attacks. Not all services require access to the internet, so those can be locked away safely within a private network.
+
+## Why did aws introduce VPCs?
+- AWS introduced VPC (Virtual Private Cloud) to provide customers with a dedicated, isolated virtual network environment in the cloud. Prior to VPC, customers using AWS services would have to rely on shared public networks or use dedicated leased lines to connect their on-premises data centers to AWS.
+
+## Diagram of VPCs
+```
+                  +------------------+
+                  |     Internet     |
+                  +------------------+
+                           |
+                           |
+                  +------------------+
+                  |   Virtual Router |
+                  |     (Amazon)     |
+                  +--------+---------+
+                           |
+                           |
+                  +--------v---------+
+                  |     VPC Network  |
+                  |   (Isolated Sub- |
+                  |    Network)      |
+                  +--------+---------+
+                           |
+            +--------------+-------------+
+            |                            |
+      +-----v-----+               +------v-------+
+      |   EC2     |               |   EC2        |
+      |  Instance |               |   Instance   |
+      +-----------+               +--------------+
+
+```
+- In this diagram, there are three main components: the Internet, a virtual router, and a VPC network.
+
+- The virtual router acts as the gateway between the VPC and the Internet. It is responsible for routing traffic between the Internet and the VPC network.
+
+- The VPC network is an isolated subnet network where AWS resources, such as EC2 instances and RDS databases, are launched. The VPC network has its own IP address range, and it can be divided into subnets for added security.
+
+# What is a internet gateway
+- An internet gateway is a networking device that acts as an entry and exit point for data flowing between a local network and the internet. It provides a bridge between a local network, which typically has private IP addresses, and the public internet, which uses public IP addresses.
+
+# What is a subnet
+- A subnet is a part of a larger network that has been separated into smaller sections, each with its own unique range of IP addresses. This allows network administrators to better manage and organize their network traffic, as well as improve network security by limiting access to certain parts of the network. Essentially, subnets enable the division of a large network into smaller, more manageable segments.
+
+# What is a CIDR?
+- CIDR (Classless Inter-Domain Routing) is a way of allocating and managing Internet Protocol (IP) addresses. It is a more flexible and efficient way of allocating IP addresses than the previous system of IP address classes.
+
+
+# How to launch my own VPC for my app and databse?
+- Step1 -> Firstly we need to create our own VPC.
+- Step2 -> Create an internet gateway to allow access to the internet for our app. 
+- Step3 -> Now we need to create 2 seperate subnets one being public for our app and the other being private for our database.
+- Step4 -> We need to now create routing tables to set the flow of data between the subnets and the internet gateway. We need to associate our subnets to their repective routing table. For our app subnet it needs to be public so we need to allow access to all ip addresses by adding `0.0.0.0`. However, for our databse subnet we need it to be private as we do not want anyone to access it.
+- Now we need to launch 2 instances in our new VPC. We can use our AMI's to launch our app instance with our public subnet and a databse instance using our private subnet.
+- Now we need to ssh into our app instance and create an `env var` to allow a connection between our app and database. We need to now use our private ip address in our `env var` as we want our database to be private and so will not have a public ip address.
+- Now we can launch our app and use our public ip address in our brower to view the content of the database.
