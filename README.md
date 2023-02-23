@@ -221,6 +221,9 @@ Amazon S3 (Simple Storage Service) is a scalable cloud-based object storage serv
 # What is a CIDR?
 - CIDR (Classless Inter-Domain Routing) is a way of allocating and managing Internet Protocol (IP) addresses. It is a more flexible and efficient way of allocating IP addresses than the previous system of IP address classes.
 
+# What is ACL in aws?
+- An access control list (ACL) is a mechanism you can use to define who has access to your buckets and objects, as well as what level of access they have. In Cloud Storage, you apply ACLs to individual buckets and objects. Each ACL consists of one or more entries.
+
 
 # How to launch my own VPC for my app and databse?
 - Step1 -> Firstly we need to create our own VPC.
