@@ -12,4 +12,4 @@
 - If we would like to change protocols from `ssh` to `https` we need to remove the protocol by using `git remote remove origin` and then we use our old command with our https link: `git remote add origin <HTTPS path from your repo on github.com>`
 
 # SSH Diagram
-![](./cloud_computing_with_AWS/images/sshkeys.PNG)
+![](./images/sshkeys.PNG)
