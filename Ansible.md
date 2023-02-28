@@ -1,4 +1,51 @@
 # Setting up Ansible
+- Run `vagrant init` to make a new vagrant file and include the following code:
+```
+Vagrant.configure("2") do |config|
+  # creating are Ansible controller
+    config.vm.define "controller" do |controller|
+      
+     controller.vm.box = "bento/ubuntu-18.04"
+     
+     controller.vm.hostname = 'controller'
+     
+     controller.vm.network :private_network, ip: "192.168.33.12"
+     
+     # config.hostsupdater.aliases = ["development.controller"] 
+     
+    end 
+  # creating first VM called web  
+    config.vm.define "web" do |web|
+      
+      web.vm.box = "bento/ubuntu-18.04"
+     # downloading ubuntu 18.04 image
+  
+      web.vm.hostname = 'web'
+      # assigning host name to the VM
+      
+      web.vm.network :private_network, ip: "192.168.33.10"
+      #   assigning private IP
+      
+      #config.hostsupdater.aliases = ["development.web"]
+      # creating a link called development.web so we can access web page with this link instread of an IP   
+          
+    end
+    
+  # creating second VM called db
+    config.vm.define "db" do |db|
+      
+      db.vm.box = "bento/ubuntu-18.04"
+      
+      db.vm.hostname = 'db'
+      
+      db.vm.network :private_network, ip: "192.168.33.11"
+      
+      #config.hostsupdater.aliases = ["development.db"]     
+    end
+  
+  
+  end
+  ```
 - Run `Vagrant up` to set up all 3 vm machines
 - In each machine run the command `sudo apt update && upgrade -y` 
 - `ssh` into your controller machine and install ansible. Below are the commands:
