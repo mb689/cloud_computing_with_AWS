@@ -16,4 +16,3 @@
 - Ansible
 - AWS cloudformation 
 
-# Who uses these tools

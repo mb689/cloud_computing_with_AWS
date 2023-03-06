@@ -290,3 +290,63 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/<Your file name>
 ```
 
 ## Create a playbook to launch ec2 instance
+```
+---
+- hosts: localhost
+  connection: local
+  gather_facts: True
+  become: True
+  vars:
+    key_name: Mohamed_aws
+    region: eu-west-1
+    image:  ami-0b137be80f38581ca
+    id: "mohamed-tech201-app-ami"
+    sec_group: "sg-0cda84f1bb3223b0d"
+    subnet_id: "subnet-00ac052b1e40c0164"
+# add the following line if ansible by default uses python 2.7
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+
+    - name: Facts
+      block:
+
+      - name: Get instances facts
+        ec2_instance_facts:
+          aws_access_key: "{{aws_access_key}}"
+          aws_secret_key: "{{aws_secret_key}}"
+          region: "{{ region }}"
+        register: result
+
+
+    - name: Provisioning EC2 instances
+      block:
+
+      - name: Upload public key to AWS
+        ec2_key:
+          name: "{{ key_name }}"
+          key_material: "{{ lookup('file', '~/.ssh/{{ key_name }}.pub') }}"
+          region: "{{ region }}"
+          aws_access_key: "{{aws_access_key}}"
+          aws_secret_key: "{{aws_secret_key}}"
+
+      - name: Provision instance(s)
+        ec2:
+          aws_access_key: "{{aws_access_key}}"
+          aws_secret_key: "{{aws_secret_key}}"
+          assign_public_ip: true
+          key_name: "{{ key_name }}"
+          id: "{{ id }}"
+          vpc_subnet_id: "{{ subnet_id }}"
+          group_id: "{{ sec_group }}"
+          image: "{{ image }}"
+          instance_type: t2.micro
+          region: "{{ region }}"
+          wait: true
+          count: 1
+          instance_tags:
+            Name: Mohamed-app-ansible
+
+      tags: ['never', 'create_ec2']
+```
+
+- Run the command `sudo ansible-playbook playbook.yml` to execute the playbook and launch the ec2 instance.
