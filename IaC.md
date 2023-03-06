@@ -16,3 +16,5 @@
 - Ansible
 - AWS cloudformation 
 
+# Iac Diagram
+![](./images/IaC_picture.png)
