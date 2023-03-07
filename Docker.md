@@ -143,3 +143,22 @@ CMD ["nginx", "-g", "daemon off;"]
 - Now build the image using the command `docker build -t <Image name> .`
 - Then run a contianer based on the image `docker run <Image name>`
 - Finally you can push the image to docker hub `docker push <docker-hub-usernamne>/<repo-name>`
+
+### For Node app
+- To automate the start node app with docker copy the above instructions but change the contents of the `Dockerfile` with@
+```
+FROM node:14
+
+WORKDIR /app
+
+COPY app/package*.json ./
+
+RUN npm install
+
+COPY app/ .
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
+```
+- Make sure the Dockerfile is stored in the same place as your app folder
