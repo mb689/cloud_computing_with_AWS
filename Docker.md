@@ -7,6 +7,23 @@
 # Virtualization vs containerization
 - So, in simple terms, virtualization creates multiple virtual machines, each with its own operating system, while containerization creates multiple lightweight containers that share the same operating system. Virtualization provides greater isolation between applications, but is heavier in terms of resource usage and management. Containerization provides a lightweight and portable runtime environment for applications, allowing for greater density of application deployments and faster startup times.
 
+# Benefit of Docker
+- Portability: Docker allows applications to be packaged in containers that can be easily moved between different environments, such as development, testing, and production. This makes it easier to deploy applications and reduces the risk of compatibility issues.
+
+- Efficiency: Docker containers are lightweight and can be started and stopped quickly, which makes it easy to scale applications up or down based on demand. This also reduces the amount of overhead required to run applications, which can save time and resources.
+
+- Consistency: Docker ensures that all of the dependencies and configurations required to run an application are included in the container, which helps to ensure consistency across different environments. This reduces the risk of issues caused by differences in the underlying infrastructure.
+
+- Isolation: Docker containers are isolated from each other and from the underlying host system, which improves security and reduces the risk of conflicts between applications.
+
+- Collaboration: Docker images can be easily shared and distributed, which makes it easy to collaborate with other developers and organizations. This can help to speed up the development process and improve the quality of applications.
+
+# Micro-service 
+- Microservices are a software architecture pattern where an application is broken down into smaller, independent services that can be developed, deployed, and scaled independently of each other. Docker is a popular technology for deploying and managing microservices.
+
+With Docker, each microservice can be packaged into a separate container, which can be deployed and managed independently of other containers running on the same machine. 
+
+
 ![](./images/docker_diagram.png)
 
 # Docker commands
