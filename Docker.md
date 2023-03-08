@@ -1,6 +1,9 @@
 # What is Docker? 
 - Docker is a software platform that enables developers to create, deploy, and run applications in containers. Containers are lightweight, standalone, and portable software packages that contain all the necessary components and dependencies required to run an application.
 
+# What is an image in docker?
+- An image is essentially a snapshot of a container, and it contains all the files and configurations needed to run the container. Images can be shared between developers and organizations, making it easy to distribute and deploy applications.
+
 # Virtualization vs containerization
 - So, in simple terms, virtualization creates multiple virtual machines, each with its own operating system, while containerization creates multiple lightweight containers that share the same operating system. Virtualization provides greater isolation between applications, but is heavier in terms of resource usage and management. Containerization provides a lightweight and portable runtime environment for applications, allowing for greater density of application deployments and faster startup times.
 
